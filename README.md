@@ -1,5 +1,5 @@
 
-# Library Konker
+# Library Konker for ESP32
 
 This library aims to create devices on the konker platform remotely just using the login and password of your account on the platform
 
@@ -25,7 +25,7 @@ device.connect_account("your email account konker","your account password");
 #### Get json data on device channel
 
 ```javascript
-  device.send_data("define your channel","{\"Text\":\"test\",\"paramers\":{\"value random\":"+String(value)+"}}");
+  device.send_data("define your channel","{\"Text\":\"test\"}");
 ```
 
 #### Get json data from device channel
