@@ -45,7 +45,10 @@ Konker device;
 void setup() {
 
   Serial.begin(115200);
-
+	
+  //if true show the library log
+  debug_log = true;
+	
   WiFi.begin("your SSID","your password");
 
   long tempo_reconexao = millis();
