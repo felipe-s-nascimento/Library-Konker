@@ -6,6 +6,8 @@
 #include <WiFiClientSecure.h>
 #include <HTTPClient.h>
 
+extern bool debug_log;
+
 class Konker{
 
     private:

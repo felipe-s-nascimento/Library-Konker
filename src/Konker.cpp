@@ -15,6 +15,8 @@ String guid_device;
 
 long time_response = 0;
 
+bool debug_log;
+
 void application_default(){
 
     if(client.connect("api.prod.konkerlabs.net",443)){
@@ -32,14 +34,18 @@ void application_default(){
 
             nameApplication = received.substring(received.indexOf("name")+7,received.lastIndexOf("\"}]}"));
             
-            log_e("Connected account");
+            if(debug_log){
+                log_e("Connected account");
+            }
+
             https.end();
             client.stop();
          
         }
         else{
-            log_e("Connection account Failed");
-            
+            if(debug_log){
+                log_e("Connection account Failed");
+            } 
             https.end();
             client.stop();
         }
@@ -76,7 +82,10 @@ void get_guid_device(String device_id){
 
         }
         else{
-            log_e("Failed to get guid device");
+            if(debug_log){
+                log_e("Failed to get guid device");
+            }
+            
         }
        
     }
@@ -108,13 +117,17 @@ void create_connection_device(){
             //Serial.println(user_device);
             //Serial.println(password_device);
 
-            log_e("Connected device");
-
-  
+            if(debug_log){
+                log_e("Connected device");
+            }
+        
         }
         else{
             
-            log_e("Failed connection device");
+            if(debug_log){
+                log_e("Failed connection device");
+            }
+            
 
         }
 
@@ -162,7 +175,11 @@ void Konker::connect_account(String email, String password){
             application_default();
         }
         else{
-            log_e("Connection with Konker Failed");
+
+            if(debug_log){
+                log_e("Connection with Konker Failed");
+            }
+            
         }
        
     }
@@ -221,7 +238,10 @@ void Konker::create(String device_id, String device_name){
 
                 guid_device = received.substring(received.indexOf("guid")+7,received.indexOf("\"}}"));
                 
-                log_e("Device created");
+                if(debug_log){
+                    log_e("Device created");
+                }
+                
 
                 //Serial.println(guid_device);
 
@@ -232,7 +252,10 @@ void Konker::create(String device_id, String device_name){
             client.stop();
         }
         else{
-            log_e("Failed created device");
+            if(debug_log){
+                log_e("Failed created device");
+            }
+            
         }
         https.end();
         client.stop();
@@ -331,12 +354,17 @@ int Konker::send_data(String channel, String data_json){
 
         if(response == 200){
 
-            log_e("Message send success");
+            if(debug_log){
+                log_e("Message send success");
+            }
+            
             return 1;
         }
         else{
-
-            log_e("Message send fail");
+            if(debug_log){
+                log_e("Message send fail");
+            }
+            
             return -1;
         }
 

@@ -16,13 +16,13 @@ You need to have these two libraries installed [WiFiClientSecure](https://github
 device.connect_account("your email account konker","your account password");
 ```
 
-#### Create device on platform
+#### Create device on the platform and establish connection
 
 ```javascript
   device.create("define your device id","define your device name");
 ```
 
-#### Get json data on device channel
+#### Send json data on device channel
 
 ```javascript
   device.send_data("define your channel","{\"Text\":\"test\"}");
@@ -62,7 +62,7 @@ void setup() {
   //Function to connect your account konker
   device.connect_account("your email account konker","your password account");
   
-  //Function to create device on platform
+  //Function to create device on the platform and establish connection
   device.create("define your device id","define your device name");
 
 }
