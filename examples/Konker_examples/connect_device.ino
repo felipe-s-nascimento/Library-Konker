@@ -7,6 +7,9 @@ void setup() {
 
   Serial.begin(115200);
 
+  //if true show the library log
+  debug_log = true;
+
   WiFi.begin("your SSID","your password");
 
   long tempo_reconexao = millis();
@@ -21,9 +24,9 @@ void setup() {
   Serial.println("connected");
 
   //Function to connect your account konker
-  device.connect_account("your email account konker","your account password");
+  device.connect_account("your email account konker","your password account");
   
-  //Function to create device on platform
+  //Function to create device on the platform and establish connection
   device.create("define your device id","define your device name");
 
 }
@@ -39,6 +42,5 @@ void loop() {
   Serial.println(device.get_data("define your channel",1));
 
   delay(500);
-
 
 }
