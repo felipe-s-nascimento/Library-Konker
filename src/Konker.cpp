@@ -138,6 +138,12 @@ void create_connection_device(){
 
 }
 
+/**
+ * Connect your account to konker platform
+ *
+ * @param email Your email account
+ * @param password Your password account
+ */
 void Konker::connect_account(String email, String password){
     
     //const char * code = String(email+":"+password).c_str();
@@ -189,6 +195,12 @@ void Konker::connect_account(String email, String password){
 
 }
 
+/**
+ * Create device on the platform and establish connection
+ *
+ * @param device_id Set the device id of your choice
+ * @param device_name Set the device name of your choice
+ */
 void Konker::create(String device_id, String device_name){
 
     if(client.connect("api.prod.konkerlabs.net",443)){
@@ -265,6 +277,12 @@ void Konker::create(String device_id, String device_name){
 
 }
 
+/**
+ * Get json data from device channel
+ *
+ * @param channel The channel set on your device
+ * @param qty_results Set the number of results to get
+ */
 String Konker::get_data(String channel, int qty_results){
 
     unsigned long time_now = millis();
@@ -295,6 +313,8 @@ String Konker::get_data(String channel, int qty_results){
             return received;
         }
         else{
+            https.end();
+            client.stop();
             return "null";
         }
         
@@ -305,6 +325,12 @@ String Konker::get_data(String channel, int qty_results){
 
 }
 
+/**
+ * Send json data on device channel
+ *
+ * @param channel Set the channel of your choice
+ * @param data_json Message to be sent to device channel
+ */
 int Konker::send_data(String channel, String data_json){
     
     create_connection_device();
