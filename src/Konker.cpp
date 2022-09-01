@@ -282,6 +282,7 @@ void Konker::create(String device_id, String device_name){
  *
  * @param channel The channel set on your device
  * @param qty_results Set the number of results to get
+ * @return Returns message from specified channel
  */
 String Konker::get_data(String channel, int qty_results){
 
@@ -330,6 +331,8 @@ String Konker::get_data(String channel, int qty_results){
  *
  * @param channel Set the channel of your choice
  * @param data_json Message to be sent to device channel
+ * @return Returns 1 if it sends the message to the platform successfully
+ * 
  */
 int Konker::send_data(String channel, String data_json){
     
